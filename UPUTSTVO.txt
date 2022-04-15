@@ -1,0 +1,42 @@
+ ============ DJANGO REST API UPUTSTVO ==========================
+
+ 1. Kreiramo venv folder u desktopu = Python -m venv 'naziv'
+
+ 2. Aktiviramo venv i u njega instaliramo Django = env\Scripts\activate - pip install Django - python -m pip install Django
+
+ 3. Kreiramo django projekat = django-admin startproject 'naziv'
+
+ 4. Ubacimo env u projekat
+
+ 5. Kreiramo aplikaciju = python manage.py startapp 'api' (naziv)
+
+6. Instaliramo aplikaciju u setting folderu = 'api.apps.ApiConfig',
+
+7. Povezemo URLS iz projekta sa URL u aplikaciju = path('', include('api.urls'))
+
+8. Kreiramo url i povezemo ga sa zeljenim viewom = path('', views.getRoutes, name="routes"),     from . import views  -> Importujemo views u url
+
+9. Kreiramo zeljeni model
+
+10. Migriramo bazu python manage.py migrate, pyhton manage.py makemigrations, python manage.py migrate
+
+11. Importujemo model u views, pip install djangorestframework, koristim @api_view zato sto cu koristiti django kao bekend za slanje podataka iz baze
+
+12. Kreiram serializers.py fajl u kome kreiram serializer preko kojega cu objekte koje dobijam iz baze prebaciti u neki drugi format (JSON) naprimer.
+
+13. Kreiram reakt projekat sa nazivom frontend. U reaktu fetchujem api/notes i radim .json() na taj response
+
+14. Fetch iz Reacta ne radi zato sto django CORS blokira pristup. Instaliramo django-cors-headers da to resimo. I postavimo Allow_All_Orginis u settings.py
+
+15. U reactu mapujemo podatke u ListItem. Stavljam "proxy": "http://127.0.0.1:8000", u package JSON kako bih preimenovao fetch da bude samo /api/notes
+
+16. Instaliram react router i kreiramo page / gde prikazujem sve Notes i /notes/:id gde cu prikazivati odredjeni note.
+
+17. U NotePageu radim fetch fetch(`/api/notes/${noteId}`) injektujem id koji dobijam iz const params = useParams();  params.id
+
+16. U note itemu kreiram link za /note/{note.id} 
+
+17. Stajlovanje react aplikacije
+
+18. Kreiram view za put request
+
